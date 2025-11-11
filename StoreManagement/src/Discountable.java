@@ -1,4 +1,4 @@
-public class Discountable 
+public interface Discountable 
 {
-    
+    double calculateDiscountedPrice(double percent);
 }
