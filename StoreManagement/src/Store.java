@@ -1,5 +1,6 @@
 import java.util.ArrayList;
 import java.util.List;
+import javax.swing.JOptionPane;
 
 public class Store 
 {
@@ -64,7 +65,26 @@ public class Store
     
     public void addProduct(String name, double price, int quantity)
     {
-        products.add(new FoodProduct(ShopManager.getNextProductId(), name, price, quantity, "N/A"));
+        try 
+        {
+            if (quantity < 0) 
+            {
+                throw new InvalidStockOperationException("Quantity cannot be negative", 101);
+            }
+
+            products.add(new FoodProduct(ShopManager.getNextProductId(), name, price, quantity, "N/A"));
+        } 
+        catch (InvalidStockOperationException e) 
+        {
+            System.err.println(e);
+            
+            JOptionPane.showMessageDialog(null, e.toString() + "\n" + e.toStringInt(), "Stock Error", JOptionPane.ERROR_MESSAGE);
+        } 
+        finally 
+        {
+            System.out.println("addProduct attempt finished for: " + name);
+        }
+
     }
     
     @Override

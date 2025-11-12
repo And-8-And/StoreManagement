@@ -64,4 +64,21 @@ public abstract class Product implements Discountable
     {
         return "ID: " + id + ", " + name + " [" + getCategory() + "], Price: " + price + ", Quantity: " + quantity;
     }
+    
+    @Override
+    public boolean equals(Object o) 
+    {
+        if (this == o) 
+        {
+            return true;
+        }
+        
+        if (!(o instanceof Product)) 
+        {
+            return false;
+        }
+    
+        Product p = (Product) o;
+        return this.getId() == p.getId();
+    }
 }
