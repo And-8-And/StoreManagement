@@ -54,4 +54,14 @@ public abstract class Product implements Discountable
     }
     
     public abstract String getCategory();
+    
+    public String toString()
+    {
+        return name + " [" + getCategory() + "] - " + price + " lei, " + quantity + " buc.";
+    }
+    
+    public String toDetailedString()
+    {
+        return "ID: " + id + ", " + name + " [" + getCategory() + "], Price: " + price + ", Quantity: " + quantity;
+    }
 }
