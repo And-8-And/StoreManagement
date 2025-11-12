@@ -4,17 +4,39 @@ import java.util.ArrayList;
 import java.util.List;
 import javax.swing.SwingUtilities;
 import javax.swing.JTextField;
+import javax.swing.DefaultListModel;
 
 public class ShopChainFrame extends javax.swing.JFrame {
     
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(ShopChainFrame.class.getName());
 
+    final DefaultListModel<String> notificationModel = new DefaultListModel<>();
+    
     public ShopChainFrame() 
     {
         initComponents();
         
-        initializeCategories();
+        initializeCategories();  
+        
+        jList1.setModel(notificationModel);
+        jList1.addMouseListener(new java.awt.event.MouseAdapter() 
+        {
+            public void mouseClicked(java.awt.event.MouseEvent evt) 
+            {
+                if (evt.getClickCount() == 2) 
+                {
+                    int index = jList1.locationToIndex(evt.getPoint());
+                    
+                    if (index >= 0) 
+                    {
+                        String selected = notificationModel.getElementAt(index);
+                        handleNotificationClick(selected);
+                    }
+                }
+            }
+        });
     }
+    
     
     private void initializeCategories() 
     {
@@ -197,9 +219,9 @@ public class ShopChainFrame extends javax.swing.JFrame {
 
         jLabel3.setText("   Product Name");
 
-        jLabel4.setText(" Product Price (lei)");
+        jLabel4.setText("Product Price (lei)");
 
-        jLabel5.setText("  Product Quantity");
+        jLabel5.setText("Product Quantity");
 
         jLabel6.setText("Stores");
 
@@ -230,10 +252,10 @@ public class ShopChainFrame extends javax.swing.JFrame {
                                 .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel2Layout.createSequentialGroup()
                                 .addContainerGap()
-                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(18, 18, 18)
+                                    .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, 112, Short.MAX_VALUE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(jPanel2Layout.createSequentialGroup()
                                         .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -244,9 +266,9 @@ public class ShopChainFrame extends javax.swing.JFrame {
                                         .addGap(18, 18, 18)
                                         .addComponent(jButton4))
                                     .addGroup(jPanel2Layout.createSequentialGroup()
-                                        .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(18, 18, 18)
-                                        .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                        .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                         .addGap(18, 18, 18)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(jPanel2Layout.createSequentialGroup()
@@ -279,23 +301,20 @@ public class ShopChainFrame extends javax.swing.JFrame {
                             .addComponent(jLabel5)
                             .addComponent(jLabel3))
                         .addGap(18, 18, 18)
-                        .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel6)))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(10, 10, 10)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jTextField10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jButton11))
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addGap(34, 34, 34)
-                                .addComponent(jLabel6))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jLabel13)
-                                .addGap(18, 18, 18)
-                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel7))))))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel13)
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel7))))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 9, Short.MAX_VALUE)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 350, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
@@ -401,6 +420,11 @@ public class ShopChainFrame extends javax.swing.JFrame {
         jScrollPane4.setViewportView(jList1);
 
         jButton8.setText("Delete Notifications");
+        jButton8.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton8ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
@@ -590,6 +614,8 @@ public class ShopChainFrame extends javax.swing.JFrame {
 
                         model.addRow(new Object[]{storeName, storeAddress});
 
+                        addNotification("New store added: " + storeName);
+                        
                         jTextField1.setText("");
                         jTextField2.setText("");
                         
@@ -629,7 +655,11 @@ public class ShopChainFrame extends javax.swing.JFrame {
                     public void run()
                     {
                         DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
+                        String removedStore = model.getValueAt(selectedRow, 0).toString();
+                                
                         model.removeRow(selectedRow);
+                        
+                        addNotification("Store removed: " + removedStore);
                         
                         refreshStoresComboBox();
                     }
@@ -758,6 +788,8 @@ public class ShopChainFrame extends javax.swing.JFrame {
                     }
 
                    model.addRow(new Object[]{name, price, quantity, category, store});
+                   
+                    addNotification("New product added: " + name + " in store " + store);
                         
                     jTextField3.setText("");
                     jTextField4.setText("");
@@ -787,7 +819,13 @@ public class ShopChainFrame extends javax.swing.JFrame {
                         if (row != -1)
                         {
                             DefaultTableModel model = (DefaultTableModel) jTable2.getModel();
+                            
+                            String productName = model.getValueAt(row, 0).toString();
+                            String storeName = model.getValueAt(row, 4).toString();
+    
                             model.removeRow(row);
+                            
+                            addNotification("Product removed: " + productName + " from store " + storeName);
                         }
                         else
                         {
@@ -801,6 +839,7 @@ public class ShopChainFrame extends javax.swing.JFrame {
         t.start();
     }//GEN-LAST:event_jButton4ActionPerformed
 
+    // Add Category Button
     private void jButton11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton11ActionPerformed
         
         Thread t = new Thread(new Runnable()
@@ -846,6 +885,9 @@ public class ShopChainFrame extends javax.swing.JFrame {
                         }
 
                         jComboBox2.addItem(newCategoryName);
+                        
+                        addNotification("New category added: " + newCategoryName);
+
                         jTextField10.setText("");
                     }
                 });
@@ -970,6 +1012,8 @@ public class ShopChainFrame extends javax.swing.JFrame {
                             storeName,
                             formattedDiscountedPrice
                         });
+                        
+                        addNotification("New discount added: " + productName + " (" + discountPercent + "%) in store " + storeName);
 
                         jTextField6.setText("");
                         jTextField7.setText("");
@@ -985,7 +1029,78 @@ public class ShopChainFrame extends javax.swing.JFrame {
     //Remove Button
     private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
        
+        Thread t = new Thread(new Runnable() 
+        {
+            public void run() 
+            {
+                SwingUtilities.invokeLater(new Runnable() 
+                {
+                    public void run() 
+                    {
+                        int selectedRow = jTable3.getSelectedRow();
+                    
+                        if (selectedRow != -1) 
+                        {
+                            DefaultTableModel model = (DefaultTableModel) jTable3.getModel();
+                            
+                            String removedProduct = model.getValueAt(selectedRow, 0).toString();
+                            String removedStore = model.getValueAt(selectedRow, 4).toString();
+
+                            model.removeRow(selectedRow);
+                            
+                            addNotification("Discount removed: " + removedProduct + " in store " + removedStore);
+                        }    
+                        else 
+                        {
+                            JOptionPane.showMessageDialog(ShopChainFrame.this, "Select a row to remove");
+                        }
+                    }
+                });
+            }
+        });
+    
+        t.start();
     }//GEN-LAST:event_jButton7ActionPerformed
+
+    // Reports Tab //
+    
+    // Delete Notifications Button
+    private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
+        Thread t = new Thread(new Runnable() 
+    {
+        public void run() 
+        {
+            SwingUtilities.invokeLater(new Runnable() 
+            {
+                public void run() 
+                {
+                    if (notificationModel.isEmpty()) 
+                    {
+                        JOptionPane.showMessageDialog(ShopChainFrame.this, "No notifications to delete")
+                                ;
+                        return;
+                    }
+
+                        int confirm = JOptionPane.showConfirmDialog
+                        (
+                            ShopChainFrame.this,
+                            "Are you sure you want to delete all notifications?",
+                            "Confirm Deletion",
+                            JOptionPane.YES_NO_OPTION
+                            );
+
+                        if (confirm == JOptionPane.YES_OPTION) 
+                        {
+                            notificationModel.clear();
+                            JOptionPane.showMessageDialog(ShopChainFrame.this, "All notifications deleted");
+                        }
+                    }
+                });
+            }
+        });
+
+        t.start();
+    }//GEN-LAST:event_jButton8ActionPerformed
 
     private String getTextFieldText(JTextField textField) 
     {
@@ -1047,6 +1162,102 @@ public class ShopChainFrame extends javax.swing.JFrame {
             }
         });
     }
+    
+    private void addNotification(String message) 
+    {
+        notificationModel.addElement(message);
+    }
+
+    private void handleNotificationClick(String notification) 
+{
+    if (notification.contains("store")) 
+    {
+        jTabbedPane1.setSelectedIndex(0); // Stores tab
+        
+        String storeName = notification.substring(notification.indexOf(":") + 1).trim();
+        storeName = storeName.replace("in store", "").trim();
+
+        for (int i = 0; i < jTable1.getRowCount(); i++) 
+        {
+            Object value = jTable1.getValueAt(i, 0);
+            if (value != null && value.toString().equalsIgnoreCase(storeName)) 
+            {
+                jTable1.setRowSelectionInterval(i, i);
+                jTable1.scrollRectToVisible(jTable1.getCellRect(i, 0, true));
+                
+                break;
+            }
+        }
+    }
+    else if (notification.contains("product")) 
+    {
+        jTabbedPane1.setSelectedIndex(1); // Products tab
+        
+        if (notification.contains("added") || notification.contains("removed")) 
+        {
+            String[] parts = notification.split(":")[1].split("from store|in store");
+            String productName = parts[0].trim();
+            String storeName = (parts.length > 1) ? parts[1].trim() : "";
+
+            for (int i = 0; i < jTable2.getRowCount(); i++) 
+            {
+                Object pName = jTable2.getValueAt(i, 0);
+                Object pStore = jTable2.getValueAt(i, 4);
+                
+                if (pName != null && pStore != null && pName.toString().equalsIgnoreCase(productName) && pStore.toString().equalsIgnoreCase(storeName)) 
+                {
+                    jTable2.setRowSelectionInterval(i, i);
+                    jTable2.scrollRectToVisible(jTable2.getCellRect(i, 0, true));
+                    
+                    break;
+                }
+            }
+        }
+    }
+    else if (notification.contains("discount")) 
+    {
+        jTabbedPane1.setSelectedIndex(2); // Discount tab
+        
+        String[] parts = notification.split(":")[1].split("\\(");
+        String productName = parts[0].trim();
+        String storeName = "";
+        
+        if (notification.contains("in store")) 
+        {
+            storeName = notification.substring(notification.indexOf("in store") + 8).trim();
+        }
+
+        for (int i = 0; i < jTable3.getRowCount(); i++) 
+        {
+            Object pName = jTable3.getValueAt(i, 0);
+            Object pStore = jTable3.getValueAt(i, 4);
+
+            if (pName != null && pStore != null && pName.toString().equalsIgnoreCase(productName) && pStore.toString().equalsIgnoreCase(storeName)) 
+            {
+                jTable3.setRowSelectionInterval(i, i);
+                jTable3.scrollRectToVisible(jTable3.getCellRect(i, 0, true));
+                
+                break;
+            }
+        }
+    }
+    else if (notification.contains("category")) 
+    {
+        jTabbedPane1.setSelectedIndex(1); // Products tab
+
+        String categoryName = notification.substring(notification.indexOf(":") + 1).trim();
+
+        for (int i = 0; i < jComboBox2.getItemCount(); i++) 
+        {
+            if (jComboBox2.getItemAt(i).toString().equalsIgnoreCase(categoryName)) 
+            {
+                jComboBox2.setSelectedIndex(i);
+                
+                break;
+            }
+        }
+    }
+}
     
     public static void main(String args[]) 
     { 
