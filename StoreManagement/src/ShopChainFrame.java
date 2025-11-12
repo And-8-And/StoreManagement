@@ -106,6 +106,8 @@ public class ShopChainFrame extends javax.swing.JFrame {
         jButton10 = new javax.swing.JButton();
         jLabel12 = new javax.swing.JLabel();
         jTextField9 = new javax.swing.JTextField();
+        jTextField12 = new javax.swing.JTextField();
+        jLabel15 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -449,18 +451,23 @@ public class ShopChainFrame extends javax.swing.JFrame {
 
         jTable4.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null}
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+                "Store Name", "Store Address"
             }
         ));
         jScrollPane5.setViewportView(jTable4);
 
         jButton9.setText("Search");
+        jButton9.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton9ActionPerformed(evt);
+            }
+        });
 
         jLabel11.setText("  Store Name");
 
@@ -468,29 +475,28 @@ public class ShopChainFrame extends javax.swing.JFrame {
         jPanel5.setLayout(jPanel5Layout);
         jPanel5Layout.setHorizontalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane5)
+            .addComponent(jScrollPane5, javax.swing.GroupLayout.DEFAULT_SIZE, 800, Short.MAX_VALUE)
             .addGroup(jPanel5Layout.createSequentialGroup()
-                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel5Layout.createSequentialGroup()
-                        .addGap(259, 259, 259)
-                        .addComponent(jTextField8, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(jButton9))
-                    .addGroup(jPanel5Layout.createSequentialGroup()
-                        .addGap(273, 273, 273)
-                        .addComponent(jLabel11)))
-                .addContainerGap(347, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jTextField8, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jButton9)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(jPanel5Layout.createSequentialGroup()
+                .addGap(318, 318, 318)
+                .addComponent(jLabel11)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
-                .addGap(36, 36, 36)
+                .addContainerGap(48, Short.MAX_VALUE)
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jTextField8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton9))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel11)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 27, Short.MAX_VALUE)
+                .addGap(15, 15, 15)
                 .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 350, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
@@ -498,20 +504,27 @@ public class ShopChainFrame extends javax.swing.JFrame {
 
         jTable5.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null}
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+                "Product Name", "Product Price", "Product Quantity", "Product Category", "Store Name"
             }
         ));
         jScrollPane6.setViewportView(jTable5);
 
         jButton10.setText("Search");
+        jButton10.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton10ActionPerformed(evt);
+            }
+        });
 
         jLabel12.setText("  Product Name");
+
+        jLabel15.setText("Store Name");
 
         javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
         jPanel6.setLayout(jPanel6Layout);
@@ -519,16 +532,19 @@ public class ShopChainFrame extends javax.swing.JFrame {
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jScrollPane6)
             .addGroup(jPanel6Layout.createSequentialGroup()
+                .addGap(246, 246, 246)
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jTextField9, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel6Layout.createSequentialGroup()
-                        .addGap(264, 264, 264)
-                        .addComponent(jLabel12))
-                    .addGroup(jPanel6Layout.createSequentialGroup()
-                        .addGap(258, 258, 258)
-                        .addComponent(jTextField9, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(jButton10)))
-                .addContainerGap(348, Short.MAX_VALUE))
+                        .addGap(6, 6, 6)
+                        .addComponent(jLabel12)))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jTextField12, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel15, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addComponent(jButton10)
+                .addContainerGap(242, Short.MAX_VALUE))
         );
         jPanel6Layout.setVerticalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -536,9 +552,12 @@ public class ShopChainFrame extends javax.swing.JFrame {
                 .addGap(0, 48, Short.MAX_VALUE)
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton10)
-                    .addComponent(jTextField9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jTextField9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTextField12, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel12)
+                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel12)
+                    .addComponent(jLabel15))
                 .addGap(15, 15, 15)
                 .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 350, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
@@ -1102,6 +1121,191 @@ public class ShopChainFrame extends javax.swing.JFrame {
         t.start();
     }//GEN-LAST:event_jButton8ActionPerformed
 
+    // Search Stores Tab //
+    
+    // Search Button
+    private void jButton9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton9ActionPerformed
+        Thread t = new Thread(new Runnable() 
+        {
+            public void run() 
+            {
+                final String searchName = getTextFieldText(jTextField8);
+
+                if (searchName.isEmpty()) 
+                {
+                    SwingUtilities.invokeLater(new Runnable() 
+                    {
+                        public void run() 
+                        {
+                            JOptionPane.showMessageDialog(ShopChainFrame.this, "Enter store name to search");
+                        }
+                    });
+                    return;
+                }
+
+                SwingUtilities.invokeLater(new Runnable() 
+                {
+                    public void run() 
+                    {
+                        DefaultTableModel storeModel = (DefaultTableModel) jTable1.getModel();
+                        DefaultTableModel resultModel = (DefaultTableModel) jTable4.getModel();
+
+                        // Clear previous results
+                        while (resultModel.getRowCount() > 0) 
+                        {
+                            resultModel.removeRow(0);
+                        }
+
+                        boolean found = false;
+
+                        for (int i = 0; i < storeModel.getRowCount(); i++) 
+                        {
+                            Object storeNameObj = storeModel.getValueAt(i, 0);
+                            Object storeAddressObj = storeModel.getValueAt(i, 1);
+                        
+                            if (storeNameObj != null) 
+                            {
+                                String name = storeNameObj.toString().toLowerCase();
+                                String search = searchName.toLowerCase();
+
+                                if (name.contains(search)) 
+                                {
+                                    String address = "";
+                                    
+                                    if (storeAddressObj != null) 
+                                    {
+                                    address = storeAddressObj.toString();
+                                    }
+
+                                    resultModel.addRow(new Object[] { storeNameObj.toString(), address });
+                                    found = true;
+                                }
+                            }
+                        }
+
+                        if (!found) 
+                        {
+                            JOptionPane.showMessageDialog(ShopChainFrame.this, "No stores found with name: " + searchName);
+                        }
+                    }
+                });
+            }
+        });
+        t.start();
+    }//GEN-LAST:event_jButton9ActionPerformed
+
+    // Search Products Tab //
+    
+    // Search Button
+    private void jButton10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton10ActionPerformed
+       
+        Thread t = new Thread(new Runnable()
+        {
+            public void run()
+            {
+                final String productSearch = getTextFieldText(jTextField9).toLowerCase();
+                final String storeSearch = getTextFieldText(jTextField12).toLowerCase();
+
+                SwingUtilities.invokeLater(new Runnable()
+                {
+                    public void run()
+                    {
+                        DefaultTableModel productModel = (DefaultTableModel) jTable2.getModel();
+                        DefaultTableModel resultModel = (DefaultTableModel) jTable5.getModel();
+
+                        while (resultModel.getRowCount() > 0)
+                        {
+                            resultModel.removeRow(0);
+                        }
+
+                        boolean found = false;
+
+                        for (int i = 0; i < productModel.getRowCount(); i++) 
+                        {
+                            Object nameObj = productModel.getValueAt(i, 0);
+                            Object priceObj = "";
+                            Object quantityObj = "";
+                            Object categoryObj = "";
+                            Object storeObj = "";
+
+                            if (productModel.getColumnCount() > 1) 
+                            {
+                                priceObj = productModel.getValueAt(i, 1);
+                            }
+                            
+                            if (productModel.getColumnCount() > 2) 
+                            {
+                                quantityObj = productModel.getValueAt(i, 2);
+                            }
+                            
+                            if (productModel.getColumnCount() > 3) 
+                            {
+                                categoryObj = productModel.getValueAt(i, 3);
+                            }
+                            
+                            if (productModel.getColumnCount() > 4) 
+                            {
+                                storeObj = productModel.getValueAt(i, 4);
+                            }
+
+                            if (nameObj != null && storeObj != null) 
+                            {
+                                String name = nameObj.toString().toLowerCase();
+                                String store = storeObj.toString().toLowerCase();
+
+                                boolean matchesProduct = false;
+                                if (productSearch.length() == 0 || name.contains(productSearch)) 
+                                {
+                                matchesProduct = true;
+                                }
+
+                                boolean matchesStore = false;
+                                if (storeSearch.length() == 0 || store.contains(storeSearch)) 
+                                {
+                                    matchesStore = true;
+                                }
+
+                                if (matchesProduct && matchesStore) 
+                                {
+                                    if (productModel.getColumnCount() == 5) 
+                                    {
+                                            resultModel.addRow(new Object[] 
+                                            {
+                                                nameObj, 
+                                                priceObj, 
+                                                quantityObj, 
+                                                categoryObj,
+                                                storeObj
+                                        });
+                                    } 
+                                    else 
+                                    {
+                                        resultModel.addRow(new Object[] 
+                                        {
+                                            nameObj, 
+                                            priceObj, 
+                                            quantityObj, 
+                                            categoryObj, 
+                                            storeObj
+                                        });
+                                    }
+                                    found = true;
+                                }
+                            }
+                        }
+
+                        if (!found) 
+                        {
+                            JOptionPane.showMessageDialog(ShopChainFrame.this, "No matching products found");
+                        }
+                    }
+                });
+            }
+        });
+
+        t.start();
+    }//GEN-LAST:event_jButton10ActionPerformed
+    
     private String getTextFieldText(JTextField textField) 
     {
         return textField.getText().trim();
@@ -1283,6 +1487,7 @@ public class ShopChainFrame extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
+    private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -1313,6 +1518,7 @@ public class ShopChainFrame extends javax.swing.JFrame {
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField10;
     private javax.swing.JTextField jTextField11;
+    private javax.swing.JTextField jTextField12;
     private javax.swing.JTextField jTextField2;
     private javax.swing.JTextField jTextField3;
     private javax.swing.JTextField jTextField4;
