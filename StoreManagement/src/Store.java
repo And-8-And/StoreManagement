@@ -58,51 +58,45 @@ public class Store
         this.products = products;
     }
     
-    public void addProduct(Product p)
+    public void addProduct(Product p) throws InvalidStockOperationException
     {
-        products.add(p);
-    }
-    
-    public void addProduct(String name, double price, int quantity)
-    {
-        try 
-        {
-            if (quantity < 0) 
+            if (p.getQuantity() < 0) 
             {
                 throw new InvalidStockOperationException("Quantity cannot be negative", 101);
             }
-
-            products.add(new FoodProduct(ShopManager.getNextProductId(), name, price, quantity, "N/A"));
-        } 
-        catch (InvalidStockOperationException e) 
-        {
-            System.err.println(e);
             
-            JOptionPane.showMessageDialog(null, e.toString() + "\n" + e.toStringInt(), "Stock Error", JOptionPane.ERROR_MESSAGE);
-        } 
-        finally 
-        {
-            System.out.println("addProduct attempt finished for: " + name);
-        }
-
+            if (p.getPrice() < 0) 
+            {
+                throw new InvalidStockOperationException("Price cannot be negative", 102);
+            }
+            
+            products.add(p);
     }
     
     @Override
     public String toString() 
     {
-        return name + " (" + city + ") - " + products.size() + "product";
+        return name + " (" + city + ") - " + products.size() + " product(s)";
     }
     
     public String detailedToString()
     {
         StringBuilder sb = new StringBuilder();
         
-        sb.append("Shop: ").append(name).append(" (").append(city).append(" )\n");
+        sb.append("Shop: ").append(name).append(" (").append(city).append(")\n");
+        sb.append("Products:\n");
         
-        sb.append("Products: \n");
-        for (int i = 0; i < products.size(); i++)
+        if (products.isEmpty())
         {
-            sb.append(" - ").append(products.toString()).append("\n");
+            sb.append(" - No products available.\n");
+        }
+        else
+        {
+            for (int i = 0; i < products.size(); i++)
+            {
+                Product p = products.get(i);
+                sb.append(" - ").append(p.toDetailedString()).append("\n");
+            }
         }
         
         return sb.toString();

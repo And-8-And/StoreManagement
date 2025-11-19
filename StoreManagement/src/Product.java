@@ -1,21 +1,33 @@
 public abstract class Product implements Discountable
 {
-    private int id;
+    protected int id;
     private String name;
     private double price;
     private int quantity;
 
+    private static int nextId = 1;
+    
     public Product(int id, String name, double price, int quantity) 
     {
         this.id = id;
         this.name = name;
         this.price = price;
         this.quantity = quantity;
+        
+        if (id >= nextId) 
+        {
+            nextId = id + 1;
+        }
     }
 
     public int getId() 
     {
         return id;
+    }
+    
+    public static int getNextId()
+    {
+        return nextId;
     }
 
     public void setId(int id) 
